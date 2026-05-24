@@ -1,11 +1,11 @@
 backend:
   repository: voronyukea/my-backend
-  tag: latest
+  tag: "83cd702e7f3853441b86d02f84294d9b74e09aed"
   port: 5000
   replicaCount: 2
 
 frontend:
   repository: voronyukea/my-frontend
-  tag: latest
+  tag: "83cd702e7f3853441b86d02f84294d9b74e09aed"
   port: 80
   replicaCount: 2
