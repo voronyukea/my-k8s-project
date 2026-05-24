@@ -47,3 +47,17 @@ jobs:
           tags: |
             voronyukea/my-frontend:latest
             voronyukea/my-frontend:${{ github.sha }}
+
+      # Step 6: Автоматически обновляем тег в values.yaml внутри Helm-чарта
+      - name: Update image tags in Helm values
+        run: |
+          sed -i 's|tag: .*|tag: "${{ github.sha }}"|g' ./k8s-helm/values.yaml
+          
+      # Step 7: Коммитим измененный values.yaml обратно в репозиторий
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add ./k8s-helm/values.yaml
+          git commit -m "image tag update to ${{ github.sha }} [skip ci]"
+          git push origin main
