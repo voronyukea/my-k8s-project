@@ -1,0 +1,11 @@
+backend:
+  repository: voronyukea/my-backend
+  tag: latest
+  port: 5000
+  replicaCount: 2
+
+frontend:
+  repository: voronyukea/my-frontend
+  tag: latest
+  port: 80
+  replicaCount: 2
